@@ -31,6 +31,12 @@ public class BookService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    public BookInfoDto getBookByTitle(String title) {
+        Optional<BookInfo> bookInfo = bookRepository.findByTitle(title);
+        return bookInfo.map(book -> mapper.convertValue(book, BookInfoDto.class))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+    
     public List<BookInfoDto> getAllBooks() {
         return bookRepository.findAll().stream()
                 .map(book -> mapper.convertValue(book, BookInfoDto.class))
