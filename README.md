@@ -1,6 +1,6 @@
 # MongoDb Interaction Spring Boot Application
 
-This application is created to practice interacting with MongoDb in a Spring Boot environment.
+This application is created to practice interacting with MongoDB in a Spring Boot environment.
 
 The application uses the following components/technologies:
 1. Java 11
