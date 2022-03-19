@@ -7,17 +7,19 @@ import java.util.List;
 
 @Data
 @Document(collection = "books")
-public class BookInfo {
+public class Book {
     private String id;
     private String title;
     private String description;
+    private CoverType coverType;
     private Integer numberOfPages;
     private Double weight;
     private List<Author> authors;
 
-    public BookInfo(String title, String description, Integer numberOfPages, Double weight, List<Author> authors) {
+    public Book(String title, String description, CoverType coverType, Integer numberOfPages, Double weight, List<Author> authors) {
         this.title = title;
         this.description = description;
+        this.coverType = coverType;
         this.numberOfPages = numberOfPages;
         this.weight = weight;
         this.authors = authors;

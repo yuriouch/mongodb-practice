@@ -1,6 +1,6 @@
 package com.ouch.mongodbpractice.dto;
 
-import com.ouch.mongodbpractice.model.Author;
+import com.ouch.mongodbpractice.model.CoverType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,10 +8,11 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class BookInfoDto {
+public class BookDto {
     private String title;
     private String description;
+    private CoverType coverType;
     private Integer numberOfPages;
     private Double weight;
-    private List<Author> authors;
+    private List<AuthorDto> authors;
 }

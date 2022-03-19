@@ -13,5 +13,5 @@ public class AuthorDto {
     private String lastName;
     private Integer age;
     private LocalDate dateOfBirth;
-    private List<Object> books;
+    private List<BookDto> books;
 }

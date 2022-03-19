@@ -1,8 +1,8 @@
 package com.ouch.mongodbpractice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ouch.mongodbpractice.dto.BookInfoDto;
-import com.ouch.mongodbpractice.model.BookInfo;
+import com.ouch.mongodbpractice.dto.BookDto;
+import com.ouch.mongodbpractice.model.Book;
 import com.ouch.mongodbpractice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,27 +25,27 @@ public class BookService {
         this.mapper = mapper;
     }
 
-    public BookInfoDto getBookById(String id) {
-        Optional<BookInfo> bookInfo = bookRepository.findById(id);
-        return bookInfo.map(book -> mapper.convertValue(book, BookInfoDto.class))
+    public BookDto getBookById(String id) {
+        Optional<Book> bookInfo = bookRepository.findById(id);
+        return bookInfo.map(book -> mapper.convertValue(book, BookDto.class))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public BookInfoDto getBookByTitle(String title) {
-        Optional<BookInfo> bookInfo = bookRepository.findByTitle(title);
-        return bookInfo.map(book -> mapper.convertValue(book, BookInfoDto.class))
+    public BookDto getBookByTitle(String title) {
+        Optional<Book> bookInfo = bookRepository.findByTitle(title);
+        return bookInfo.map(book -> mapper.convertValue(book, BookDto.class))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     
-    public List<BookInfoDto> getAllBooks() {
+    public List<BookDto> getAllBooks() {
         return bookRepository.findAll().stream()
-                .map(book -> mapper.convertValue(book, BookInfoDto.class))
+                .map(book -> mapper.convertValue(book, BookDto.class))
                 .collect(Collectors.toList());
     }
 
-    public BookInfoDto saveBook(BookInfoDto bookInfoDto) {
-        BookInfo bookInfo = mapper.convertValue(bookInfoDto, BookInfo.class);
-        return mapper.convertValue(bookRepository.save(bookInfo), BookInfoDto.class);
+    public BookDto saveBook(BookDto bookDto) {
+        Book book = mapper.convertValue(bookDto, Book.class);
+        return mapper.convertValue(bookRepository.save(book), BookDto.class);
     }
 
     public void deleteBookById(String id) {

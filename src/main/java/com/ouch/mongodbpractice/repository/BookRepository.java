@@ -1,10 +1,10 @@
 package com.ouch.mongodbpractice.repository;
 
-import com.ouch.mongodbpractice.model.BookInfo;
+import com.ouch.mongodbpractice.model.Book;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface BookRepository extends MongoRepository<BookInfo, String> {
-    Optional<BookInfo> findByTitle(String title);
+public interface BookRepository extends MongoRepository<Book, String> {
+    Optional<Book> findByTitle(String title);
 }

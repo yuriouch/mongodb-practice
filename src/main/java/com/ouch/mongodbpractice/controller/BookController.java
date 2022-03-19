@@ -1,6 +1,6 @@
 package com.ouch.mongodbpractice.controller;
 
-import com.ouch.mongodbpractice.dto.BookInfoDto;
+import com.ouch.mongodbpractice.dto.BookDto;
 import com.ouch.mongodbpractice.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,23 +26,23 @@ public class BookController {
     }
 
     @GetMapping("/books/{id}")
-    public BookInfoDto getBookById(@PathVariable String id) {
+    public BookDto getBookById(@PathVariable String id) {
         return bookService.getBookById(id);
     }
 
     @GetMapping("/books/param")
-    public BookInfoDto getBookByTitle(@RequestParam String title) {
+    public BookDto getBookByTitle(@RequestParam String title) {
         return bookService.getBookByTitle(title);
     }
 
     @GetMapping("/books")
-    public List<BookInfoDto> getAllBooks() {
+    public List<BookDto> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @PostMapping("/books")
-    public BookInfoDto saveBook(@RequestBody BookInfoDto bookInfoDto) {
-        return bookService.saveBook(bookInfoDto);
+    public BookDto saveBook(@RequestBody BookDto bookDto) {
+        return bookService.saveBook(bookDto);
     }
 
     @DeleteMapping("/books/{id}")
