@@ -30,11 +30,17 @@ public class BookService {
         return bookInfo.map(book -> mapper.convertValue(book, BookDto.class))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
-    public BookDto getBookByTitle(String title) {
-        Optional<Book> bookInfo = bookRepository.findByTitle(title);
-        return bookInfo.map(book -> mapper.convertValue(book, BookDto.class))
+    
+    public BookDto getBookByIsbn(String isbn) {
+        return bookRepository.findOneByIsbn(isbn)
+                .map(book -> mapper.convertValue(book, BookDto.class))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    public List<BookDto> getBooksByTitle(String title) {
+        return bookRepository.findByTitle(title).stream()
+                .map(book -> mapper.convertValue(book, BookDto.class))
+                .collect(Collectors.toList());
     }
     
     public List<BookDto> getAllBooks() {

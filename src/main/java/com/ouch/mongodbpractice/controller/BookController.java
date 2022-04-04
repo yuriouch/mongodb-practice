@@ -29,10 +29,15 @@ public class BookController {
     public BookDto getBookById(@PathVariable String id) {
         return bookService.getBookById(id);
     }
+    
+    @GetMapping("/book/{isbn}")
+    public BookDto getBookByIsbn(@PathVariable String isbn) {
+        return bookService.getBookByIsbn(isbn);
+    }
 
     @GetMapping("/books/param")
-    public BookDto getBookByTitle(@RequestParam String title) {
-        return bookService.getBookByTitle(title);
+    public List<BookDto> getBooksByTitle(@RequestParam String title) {
+        return bookService.getBooksByTitle(title);
     }
 
     @GetMapping("/books")

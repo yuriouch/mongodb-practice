@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class BookDto {
+    private String isbn;
     private String title;
     private String description;
     private CoverType coverType;

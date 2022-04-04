@@ -9,6 +9,7 @@ import java.util.List;
 @Document(collection = "books")
 public class Book {
     private String id;
+    private String isbn;
     private String title;
     private String description;
     private CoverType coverType;
@@ -16,7 +17,8 @@ public class Book {
     private Double weight;
     private List<Author> authors;
 
-    public Book(String title, String description, CoverType coverType, Integer numberOfPages, Double weight, List<Author> authors) {
+    public Book(String isbn, String title, String description, CoverType coverType, Integer numberOfPages, Double weight, List<Author> authors) {
+        this.isbn = isbn;
         this.title = title;
         this.description = description;
         this.coverType = coverType;
