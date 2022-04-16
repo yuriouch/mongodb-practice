@@ -14,14 +14,12 @@ public class Author {
     private String id;
     private String firstName;
     private String lastName;
-    private Integer age;
     private LocalDate dateOfBirth;
     private List<Object> books;
 
-    public Author(String firstName, String lastName, Integer age, LocalDate dateOfBirth, List<Object> books) {
+    public Author(String firstName, String lastName, LocalDate dateOfBirth, List<Object> books) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
         this.dateOfBirth = dateOfBirth;
         this.books = books;
     }
